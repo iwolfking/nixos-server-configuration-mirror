@@ -69,12 +69,13 @@
           "${self}/compose/mealie"
           "${self}/compose/jellyfin"
           #"${self}/compose/homarr"
-          #"${self}/compose/guacamole"
-          #"${self}/compose/audiobookshelf"
+          "${self}/compose/guacamole"
+          "${self}/compose/audiobookshelf"
           #"${self}/compose/home-assistant"
           "${self}/compose/reverse-proxy"
           #"${self}/compose/paperless"
           "${self}/compose/onedev"
+          "${self}/compose/cloudflare-ddns"
         ];
       };
     };

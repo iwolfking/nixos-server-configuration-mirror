@@ -12,4 +12,13 @@
         reverse_proxy http://192.168.0.18:6610
       '';
   };
+
+  networking.firewall = {
+  allowedTCPPorts = [
+    6610
+  ];
+  allowedUDPPorts = [
+    6610
+  ];
+  };
 }

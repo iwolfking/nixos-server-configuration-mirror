@@ -6,4 +6,14 @@
     service.restart = "unless-stopped";
     service.environment.TZ = "America/Chicago";
   };
+  networks = {
+    default = {
+      driver = "bridge";
+      ipam = {
+        config = [{
+          subnet = "10.10.1.0/24";
+          }];
+      };
+    };
+  };
 }

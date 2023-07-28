@@ -146,15 +146,8 @@
   };
 
 
-networking.firewall.interfaces."enp1s0".allowedTCPPorts = [ 80 443 8080];
-networking.firewall = {
-  allowedTCPPorts = [
-    9021 9022 9023 9027 8080 9091 61208
-  ];
-  allowedUDPPorts = [
-    9021 9022 9023 9027 8080 9091 61208
-  ];
-};
+networking.firewall.allowedTCPPorts = [ 80 443 61208];
+networking.firewall.allowedUDPPorts = [ 80 443 61208];
 
 systemd.services.caddy.serviceConfig = {
   AmbientCapabilities = "cap_net_bind_service";

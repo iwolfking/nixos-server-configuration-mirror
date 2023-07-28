@@ -18,4 +18,13 @@
         reverse_proxy http://192.168.0.18:9091
       '';
   };
+
+  networking.firewall = {
+  allowedTCPPorts = [
+    9091
+  ];
+  allowedUDPPorts = [
+    9091
+  ];
+  };
 }

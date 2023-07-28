@@ -12,4 +12,13 @@
       })
     ];
   };
+
+  networking.firewall = {
+  allowedTCPPorts = [
+    8080 8888 8388 6881
+  ];
+  allowedUDPPorts = [
+    8080 8888 8388 6881
+  ];
+  };
 }

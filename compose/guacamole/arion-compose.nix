@@ -16,4 +16,14 @@
       "autoheal" = "true";
     };
   };
+  networks = {
+    default = {
+      driver = "bridge";
+      ipam = {
+        config = [{
+          subnet = "10.10.2.0/24";
+          }];
+      };
+    };
+  };
 }
