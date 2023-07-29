@@ -11,9 +11,9 @@
     service.image = "redis:alpine";
     service.volumes = ["/mnt/server_data/data-tmp/redis-authelia:/data"];
     service.ports = ["6379:6379"];
-    service.restart: "unless-stopped";
+    service.restart = "unless-stopped";
     service.environment.TZ = "America/Chicago";
-  }
+  };
 
   networks = {
     default = {
