@@ -1,2 +1,3 @@
 #hardware-configuration.nix
 .secret-token
+compose/.tmp-*
