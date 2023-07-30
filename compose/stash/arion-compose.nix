@@ -1,9 +1,9 @@
 {
   services.stash = {
-    service.stash = "stashapp/stash:latest";
+    service.image = "stashapp/stash:latest";
     service.volumes = [
       "/etc/localtime:/etc/localtime:ro"
-      "/mnt/server_data/data/stash/:/root/.stash"
+      "/mnt/server_data/data/stash/config:/root/.stash"
       "/mnt/server_data/media/stash/data:/data"
       "/mnt/server_data/media/stash/metadata:/metadata"
       "/mnt/server_data/data-tmp/stash/cache:/cache"
@@ -18,5 +18,16 @@
     service.environment.STASH_METADATA = "/metadata/";
     service.environment.STASH_CACHE = "/cache/";
     service.environment.STASH_PORT = "9999";
+  };
+
+  networks = {
+    default = {
+      driver = "bridge";
+      ipam = {
+        config = [{
+          subnet = "10.10.4.0/24";
+          }];
+      };
+    };
   };
 }
