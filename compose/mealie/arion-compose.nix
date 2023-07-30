@@ -1,6 +1,6 @@
 {
   services.mealie = {
-    service.image = "hkotel/mealie:latest";
+    service.image = "hkotel/mealie:v0.5.6";
     service.volumes = ["/mnt/server_data/data/mealie/:/app/data"];
     service.ports = ["9925:80"];
     service.restart = "unless-stopped";

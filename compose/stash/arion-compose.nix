@@ -6,7 +6,7 @@
       "/mnt/server_data/data/stash/:/root/.stash"
       "/mnt/server_data/media/stash/data:/data"
       "/mnt/server_data/media/stash/metadata:/metadata"
-      "/mnt/server_data/media/stash/cache:/cache"
+      "/mnt/server_data/data-tmp/stash/cache:/cache"
       "/mnt/server_data/media/stash/blobs:/blobs"
       "/mnt/server_data/media/stash/generated:/generated"
     ];

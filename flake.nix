@@ -77,6 +77,7 @@
           #"${self}/compose/paperless"
           "${self}/compose/onedev"
           "${self}/compose/cloudflare-ddns"
+          "${self}/compose/stash"
         ];
       };
     };

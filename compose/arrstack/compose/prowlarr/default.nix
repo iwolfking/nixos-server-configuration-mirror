@@ -15,7 +15,12 @@
         handle @whitelist {
           reverse_proxy http://192.168.0.18:9027
         }
-        respond 403
+        forward_auth 192.168.0.18:9099 {
+          uri /api/verify?rd=https://auth.iwolfking.xyz
+          copy_headers Remote-User Remote-Groups Remote-Name Remote-Email
+        }
+
+        reverse_proxy 192.168.0.18:9027 
       '';
   };
 
