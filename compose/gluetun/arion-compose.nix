@@ -1,13 +1,14 @@
-{gluetunEnvironment, ...}:
+{gluetunEnvironment, gluetunOVPNConfig, ...}:
 {
   services.gluetun = {
     service.image = "qmcgaw/gluetun:latest";
-    service.volumes = ["/mnt/server_data/data/gluetun/:/gluetun"];
+    service.volumes = ["/mnt/server_data/data/gluetun/:/gluetun" "/run/agenix/gluetun/:/run/agenix/gluetun/"];
     service.ports = ["8888:8888" "8388:8388" "8080:8080" "6881:6881" "6881:6881/udp"];
     service.restart = "unless-stopped";
     service.environment.TZ = "America/Chicago";
-    service.environment.VPN_SERVICE_PROVIDER = "windscribe";
-    service.environment.VPN_TYPE = "wireguard";
+    service.environment.VPN_SERVICE_PROVIDER = "custom";
+    service.environment.VPN_TYPE = "openvpn";
+    service.environment.OPENVPN_CUSTOM_CONFIG= gluetunOVPNConfig;
     service.capabilities = {
       NET_ADMIN = true;
     };
