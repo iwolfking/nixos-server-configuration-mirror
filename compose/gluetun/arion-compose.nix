@@ -29,9 +29,9 @@
     service.volumes = ["/mnt/server_data/data/qbittorrent/config/qBitorrent:/config" "/mnt/server_data/downloads:/downloads"];
     service.restart = "unless-stopped";
     service.healthcheck = {
-      test = ["CMD-SHELL" "wget --no-verbose --tries=1 --spider http://192.168.0.18:8080 || exit 1"];
-      interval = "60s";
-      retries = 3;
+      test = ["CMD-SHELL" "curl -sf https://example.com || exit 1"];
+      interval = "1m";
+      retries = 1;
       start_period = "5s";
       timeout = "10s";
     };
