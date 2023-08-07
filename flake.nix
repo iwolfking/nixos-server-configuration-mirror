@@ -27,7 +27,7 @@
       # However, the configuration name can also be specified using `sudo nixos-rebuild switch --flake /path/to/flakes/directory#<name>`.
       # The `nixpkgs.lib.nixosSystem` function is used to build this configuration, the following attribute set is its parameter.
       # Run `sudo nixos-rebuild switch --flake .#nixos-test` in the flake's directory to deploy this configuration on any NixOS system
-      "nixos" = nixpkgs.lib.nixosSystem {
+      "gray-bort" = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
 
         # The Nix module system can modularize configuration, improving the maintainability of configuration.
@@ -60,13 +60,13 @@
           ./configuration.nix #system packages and configuration
           arion.nixosModules.arion #docker compose management
           agenix.nixosModules.default #secret management
-          ./hosts/hp-desktop/hardware-configuration.nix
+          ./hosts/gray-bort/hardware-configuration.nix
           #Docker Compose Stacks using arion
           "${self}/compose/arrstack"
           "${self}/compose/gluetun"
           "${self}/compose/autoheal"
           "${self}/compose/nextcloud"
-          "${self}/compose/mealie"
+          #"${self}/compose/mealie"
           "${self}/compose/jellyfin"
           #"${self}/compose/homarr"
           "${self}/compose/guacamole"
