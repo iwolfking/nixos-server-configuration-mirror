@@ -10,9 +10,9 @@
 
     # Official NixOS package source, using nixos-unstable branch here
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+
     arion = { url = "github:hercules-ci/arion"; inputs.nixpkgs.follows = "nixpkgs"; };
     agenix = { url = "github:ryantm/agenix"; inputs.nixpkgs.follows = "nixpkgs"; };
-    # home-manager, used for managing user configuration
   };
 
   # `outputs` are all the build result of the flake.
@@ -22,6 +22,13 @@
   # The `@` syntax here is used to alias the attribute set of the inputs's parameter, making it convenient to use inside the function.
   outputs = { self, nixpkgs, arion, agenix, ... }@inputs: {
     nixosConfigurations = {
+      "nixos" = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = {inherit inputs self;};
+        modules = [
+          ./configuration.nix #base system config
+        ];
+      };
       # By default, NixOS will try to refer the nixosConfiguration with its hostname.
       # so the system named `nixos-test` will use this configuration.
       # However, the configuration name can also be specified using `sudo nixos-rebuild switch --flake /path/to/flakes/directory#<name>`.
@@ -55,29 +62,31 @@
         # specialArgs = {...}  # pass custom arguments into sub module.
         specialArgs = {inherit inputs self;};
         modules = [
-          # Import the configuration.nix we used before, so that the old configuration file can still take effect.
-          # Note: /etc/nixos/configuration.nix itself is also a Nix Module, so you can import it directly here
-          ./configuration.nix #system packages and configuration
-          arion.nixosModules.arion #docker compose management
+          ./configuration.nix #base system config
+
           agenix.nixosModules.default #secret management
+
+          #host specific config
+          ./hosts/gray-bort/configuration.nix
           ./hosts/gray-bort/hardware-configuration.nix
+
           #Docker Compose Stacks using arion
+          arion.nixosModules.arion #docker compose management
           "${self}/compose/arrstack"
           "${self}/compose/gluetun"
           "${self}/compose/autoheal"
           "${self}/compose/nextcloud"
-          #"${self}/compose/mealie"
           "${self}/compose/jellyfin"
-          #"${self}/compose/homarr"
           "${self}/compose/guacamole"
           "${self}/compose/audiobookshelf"
-          #"${self}/compose/home-assistant"
-          #"${self}/compose/reverse-proxy"
           "${self}/compose/authelia"
-          #"${self}/compose/paperless"
           "${self}/compose/onedev"
           "${self}/compose/cloudflare-ddns"
           "${self}/compose/stash"
+
+          #services
+          "${self}/services/caddy"
+          "${self}/services/glances"
         ];
       };
     };
