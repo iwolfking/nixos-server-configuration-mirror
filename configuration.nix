@@ -67,6 +67,7 @@
     git
     wget
     curl
+    unrar
     glances #performance monitoring
     helix #text editor
     arion #nix docker manager
