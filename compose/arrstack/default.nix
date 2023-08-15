@@ -6,5 +6,6 @@
       (import ./compose/radarr)
       (import ./compose/sonarr)
       (import ./compose/lidarr)
+      (import ./compose/flaresolverr)
     ];
 }
