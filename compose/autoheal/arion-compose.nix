@@ -8,5 +8,8 @@
     service.environment.AUTOHEAL_INTERVAL = "60";
     service.environment.AUTOHEAL_DEFAULT_STOP_TIMEOUT = "10";
     service.env_file = [autohealEnvironment];
+    service.labels = {
+      "com.centurylinklabs.watchtower.enable" = "true";
+    };
   };
 }

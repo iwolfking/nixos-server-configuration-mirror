@@ -18,6 +18,9 @@
     service.environment.STASH_METADATA = "/metadata/";
     service.environment.STASH_CACHE = "/cache/";
     service.environment.STASH_PORT = "9999";
+    service.labels = {
+      "com.centurylinklabs.watchtower.enable" = "true";
+    };
   };
 
   networks = {

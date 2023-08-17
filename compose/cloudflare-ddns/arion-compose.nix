@@ -5,5 +5,8 @@
     service.restart = "unless-stopped";
     service.environment.TZ = "America/Chicago";
     service.network_mode = "host";
+    service.labels = {
+      "com.centurylinklabs.watchtower.enable" = "true";
+    };
   };
 }

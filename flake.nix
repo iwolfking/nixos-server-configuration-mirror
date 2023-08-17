@@ -83,6 +83,7 @@
           "${self}/compose/onedev"
           "${self}/compose/cloudflare-ddns"
           "${self}/compose/stash"
+          "${self}/compose/watchtower"
 
           #services
           "${self}/services/caddy"

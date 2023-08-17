@@ -5,5 +5,8 @@
     service.ports = ["6610:6610" "6611:6611"];
     service.restart = "unless-stopped";
     service.environment.TZ = "America/Chicago";
+    service.labels = {
+      "com.centurylinklabs.watchtower.enable" = "true";
+    };
   };
 }

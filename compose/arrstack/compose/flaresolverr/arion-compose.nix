@@ -7,6 +7,9 @@
     service.environment.LOG_LEVEL = "info";
     service.environment.LOG_HTML = "false";
     service.environment.CAPTCHA_SOLVER = "none";
+    service.labels = {
+      "com.centurylinklabs.watchtower.enable" = "true";
+    };
   };
   networks = {
     default = {
