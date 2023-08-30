@@ -10,13 +10,13 @@
     service.env_file = [nextcloudEnvironment];
   };
   
-  services.app = {
+  services.cron = {
     service.image = "nextcloud:latest";
     service.volumes = ["/mnt/server_data/data/nextcloud/data:/var/www/html"];
     service.restart = "unless-stopped";
     service.environment.TZ = "America/Chicago";
     service.env_file = [nextcloudEnvironment];
-	entrypoint: /cron.sh
+	service.entrypoint = "/cron.sh";
   };
 
   services.db = {
