@@ -24,7 +24,7 @@
     nixosConfigurations = {
       "nixos" = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        specialArgs = {inherit inputs self;};
+        specialArgs = { inherit inputs self; };
         modules = [
           ./configuration.nix #base system config
         ];
@@ -60,7 +60,7 @@
         # Only these parameters can be passed by default.
         # If you need to pass other parameters, you must use `specialArgs` by uncomment the following line
         # specialArgs = {...}  # pass custom arguments into sub module.
-        specialArgs = {inherit inputs self;};
+        specialArgs = { inherit inputs self; };
         modules = [
           ./configuration.nix #base system config
 
@@ -84,7 +84,6 @@
           "${self}/compose/cloudflare-ddns"
           "${self}/compose/stash"
           "${self}/compose/watchtower"
-
           #services
           "${self}/services/caddy"
           "${self}/services/glances"
