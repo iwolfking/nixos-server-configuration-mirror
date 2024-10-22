@@ -1,4 +1,5 @@
 {
+  project.name = "jellyfin";
   services.jellyfin = {
     service.image = "jellyfin/jellyfin:latest";
     service.volumes = ["/mnt/server_data/data-unsynced/jellyfin/cache:/cache" "/mnt/server_data/data/jellyfin/config:/config" "/mnt/server_data/media:/media"];
@@ -10,6 +11,7 @@
     service.user = "1000:1000";
     service.labels = {
       "autoheal" = "true";
+      "com.centurylinklabs.watchtower.enable" = "true";
     };
   };
 }

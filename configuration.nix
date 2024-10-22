@@ -27,6 +27,10 @@
     curl
     unrar
     helix #text editor
+    screen
+    micro #basic text editor
+    packwiz
+    rcon
   ];
 
   system.stateVersion = "22.11"; # Did you read the comment?

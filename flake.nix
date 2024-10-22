@@ -77,16 +77,21 @@
           "${self}/compose/autoheal"
           "${self}/compose/nextcloud"
           "${self}/compose/jellyfin"
-          "${self}/compose/guacamole"
+          "${self}/compose/mealie"
+          #"${self}/compose/guacamole"
           "${self}/compose/audiobookshelf"
           "${self}/compose/authelia"
           "${self}/compose/onedev"
           "${self}/compose/cloudflare-ddns"
           "${self}/compose/stash"
           "${self}/compose/watchtower"
+          "${self}/compose/bitwarden"
+          #"${self}/compose/minecraft-servers/testing-server"
+          #"${self}/compose/minecraft-servers/wolds-vaults"
+          "${self}/compose/wikijs"
           #services
           "${self}/services/caddy"
-          "${self}/services/glances"
+          #"${self}/services/glances"
         ];
       };
     };

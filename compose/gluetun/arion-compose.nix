@@ -13,7 +13,10 @@
       NET_ADMIN = true;
     };
     service.env_file = [ gluetunEnvironment ];
-    #service.devices = [ "/dev/net/tun:/dev/net/tun" ];
+    service.labels = {
+      "autoheal" = "true";
+    };
+    service.devices = [ "/dev/net/tun:/dev/net/tun" ];
   };
 
 
@@ -27,6 +30,17 @@
     };
     service.volumes = [ "/mnt/server_data/data/qbittorrent/config/qBitorrent:/config" "/mnt/server_data/downloads:/downloads" ];
     service.restart = "unless-stopped";
-    service.network_mode = "service:gluetun";
+    service.network_mode = "service:gluetun";  
+    service.healthcheck = {
+      test = ["CMD-SHELL" "curl -sf https://example.com || exit 1"];
+      interval = "1m";
+      retries = 1;
+      start_period = "5s";
+      timeout = "10s";
+    };
+    service.labels = {
+      "autoheal" = "true";
+      "com.centurylinklabs.watchtower.enable" = "true";
+    }; 
   };
 }

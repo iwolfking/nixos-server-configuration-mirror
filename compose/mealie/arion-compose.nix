@@ -1,17 +1,16 @@
 {
   services.mealie = {
-    service.image = "hkotel/mealie:v0.5.6";
+    service.image = "ghcr.io/mealie-recipes/mealie:v1.0.0-RC2";
     service.volumes = ["/mnt/server_data/data/mealie/:/app/data"];
-    service.ports = ["9925:80"];
+    service.ports = ["9925:9000"];
     service.restart = "unless-stopped";
     service.environment.TZ = "America/Chicago";
     service.environment.PUID = "1000";
     service.environment.PGID = "1000";
-    service.environment.RECIPE_PUBLIC = "true";
-    service.environment.RECIPE_SHOW_NUTRITION = "true";
-    service.environment.RECIPE_SHOW_ASSETS = "true";
-    service.environment.RECIPE_LANDSCAPE_VIEW = "true";
-    service.environment.DISABLE_COMMENTS = "false";
+    service.environment.ALLOW_SIGNUP = "true";
+    service.environment.WEB_CONCURRENCY = 1;
+    service.environment.BASE_URL = "https://mealie.iwolfking.xyz";
+    service.environment.MAX_WORKS = 1;
     service.environment.DISABLE_AMOUNT = "false";
   };
 }

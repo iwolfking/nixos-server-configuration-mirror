@@ -8,9 +8,10 @@
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
+  boot.loader.systemd-boot.memtest86.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.efi.efiSysMountPoint = "/boot";
-
+  boot.kernelPackages = pkgs.linuxPackages_latest;
   #Shell
   programs.fish.enable = true;
   users.defaultUserShell = pkgs.fish;
@@ -72,6 +73,16 @@
       virtualHosts."search.iwolfking.xyz".extraConfig = ''
         reverse_proxy http://192.168.0.134:8085
       '';
+      virtualHosts."mcdl.iwolfking.xyz".extraConfig = ''
+        reverse_proxy http://192.168.0.18:11211
+      '';
   };
-
+  networking.firewall = {
+  allowedTCPPorts = [
+    11211 25565 3030
+  ];
+  allowedUDPPorts = [
+    11211 25565 3030
+  ];
+  };
 }

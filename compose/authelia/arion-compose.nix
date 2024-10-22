@@ -5,6 +5,9 @@
     service.ports = ["9099:9091"];
     service.restart = "unless-stopped";
     service.environment.TZ = "America/Chicago";
+    service.labels = {
+      "com.centurylinklabs.watchtower.enable" = "true";
+    };
   };
 
   services.redis = {
@@ -14,7 +17,7 @@
     service.restart = "unless-stopped";
     service.environment.TZ = "America/Chicago";
   };
-
+  
   networks = {
     default = {
       driver = "bridge";

@@ -15,4 +15,8 @@
       25565
     ];
   };
+
+  services.cron = {
+    enable = true;
+  };
 }
